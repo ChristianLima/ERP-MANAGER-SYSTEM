@@ -1,21 +1,40 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const healthRoutes = require('./routes/healthRoutes');
 const db = require('./models');
+
+// Rotas
+const authRoutes = require('./routes/authRoutes');
+const healthRoutes = require('./routes/healthRoutes');
+const privateRoutes = require('./routes/privateRoutes');
 
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-app.use('/api', healthRoutes);
+// Rotas públicas
+app.use('/api/auth', authRoutes);
+app.use('/api/health', healthRoutes);
 
-const PORT = process.env.PORT || 5000;
+// Rotas protegidas (JWT necessário)
+app.use('/api/private', privateRoutes);
 
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
-  });
-});
+// Conexão com o banco e inicialização do servidor
+db.sequelize.authenticate()
+    .then(() => {
+      console.log('🗄️  Conectado ao banco de dados PostgreSQL');
+      return db.sequelize.sync(); // Sincroniza modelos com o DB
+    })
+    .then(() => {
+      app.listen(PORT, () => {
+        console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+      });
+    })
+    .catch((err) => {
+      console.error('❌ Erro ao conectar no banco:', err);
+    });

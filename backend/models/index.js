@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+
 const sequelize = require('../config/database');
 
 const db = {};
@@ -6,7 +7,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-// Você pode importar mais modelos aqui depois
-// db.User = require('./User')(sequelize, Sequelize);
+
+db.User = require('./User')(sequelize, Sequelize);
 
 module.exports = db;
