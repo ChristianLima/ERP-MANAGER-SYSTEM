@@ -1,0 +1,17 @@
+# Ignorar node_modules dos dois lados
+frontend/node_modules/
+backend/node_modules/
+
+# Ignorar dist (builds)
+frontend/dist/
+backend/dist/
+
+# Variáveis de ambiente
+frontend/.env
+backend/.env
+
+# Sistema
+.DS_Store
+
+# Logs
+*.log
