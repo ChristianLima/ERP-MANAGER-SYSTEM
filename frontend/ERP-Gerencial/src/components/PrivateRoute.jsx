@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Navigate } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';  // Para decodificar e verificar o token
+import { jwtDecode } from 'jwt-decode';
+  // Para decodificar e verificar o token
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem('token');
@@ -12,7 +13,7 @@ function PrivateRoute({ children }) {
 
   try {
     // Decodifica o token e verifica sua data de expiração
-    const decodedToken = jwt_decode(token);
+    const decodedToken = jwtDecode(token);
     const currentTime = Date.now() / 1000; // Obtém o tempo atual em segundos
 
     if (decodedToken.exp < currentTime) {
