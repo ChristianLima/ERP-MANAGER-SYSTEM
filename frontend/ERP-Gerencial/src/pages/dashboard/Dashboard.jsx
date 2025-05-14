@@ -1,4 +1,4 @@
-import Logout from '../components/Logout';
+import Logout from '../../components/Logout.jsx';
 
 function Dashboard() {
   return (
