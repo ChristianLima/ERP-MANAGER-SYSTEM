@@ -5,13 +5,24 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); // Estado para carregar enquanto faz login
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    // Validando email antes de enviar
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailRegex.test(email)) {
+      setError('Email inválido');
+      setLoading(false);
+      return;
+    }
 
     try {
-      const response = await fetch('https://sua-api-render.com/api/auth/login', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -20,18 +31,17 @@ function Login() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || 'Erro ao fazer login');
+        setError(data.error || 'Login inválido');
+        setLoading(false);
         return;
       }
 
-      // Salvar token no localStorage
       localStorage.setItem('token', data.token);
-
-      // Redirecionar para rota protegida
       navigate('/dashboard');
-    } catch (err) {
-        console.error('Erro ao fazer login:', err);
-        setError('Erro na conexão com o servidor');
+    } catch (error) {
+      console.error(error);
+      setError('Erro ao conectar com o servidor');
+      setLoading(false);
     }
   };
 
@@ -53,8 +63,9 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
           required
         /><br />
-        <button type="submit">Entrar</button>
+        <button type="submit" disabled={loading}>Entrar</button>
       </form>
+      {loading && <p>Carregando...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );

@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute'; // Importa a PrivateRoute
 import Dashboard from './pages/Dashboard';
-import PrivateRoute from './components/PrivateRoute';
+import Login from './pages/login/Login.jsx';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route
@@ -16,8 +16,9 @@ function App() {
             </PrivateRoute>
           }
         />
+        {/* Outras rotas protegidas aqui */}
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

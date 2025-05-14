@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 5000;
 // Middlewares
 app.use(cors({
     origin: 'https://erp-manager-system-nok1ylh7i-christian-limas-projects-55612625.vercel.app/', // ou '*', se for temporário
+    credentials: true
 }));
 app.use(express.json());
 

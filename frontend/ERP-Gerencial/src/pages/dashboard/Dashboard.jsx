@@ -1,5 +1,12 @@
+import Logout from '../components/Logout';
+
 function Dashboard() {
-  return <h2>Área protegida - Dashboard</h2>;
+  return (
+    <div>
+      <h1>Bem-vindo ao Sistema</h1>
+      <Logout />
+    </div>
+  );
 }
 
 export default Dashboard;
