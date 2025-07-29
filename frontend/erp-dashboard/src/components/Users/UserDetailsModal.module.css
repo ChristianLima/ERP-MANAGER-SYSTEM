@@ -1,0 +1,162 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #fff;
+  width: 700px;
+  max-width: 95%;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  background-color: #cbd5e1;
+  border-radius: 50%;
+  font-size: 28px;
+  color: #1f2937;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userInfo h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.userInfo p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.signOut {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.tabs {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.tabs span {
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.activeTab {
+  color: #2563eb;
+  font-weight: 600;
+  border-bottom: 2px solid #2563eb;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2rem;
+}
+
+.form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.form input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #f9fafb;
+}
+
+.form input:disabled {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.actions button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit {
+  background-color: #2563eb;
+  color: white;
+}
+
+.edit:hover {
+  background-color: #1e40af;
+}
+
+.save {
+  background-color: #10b981;
+  color: white;
+}
+
+.save:hover {
+  background-color: #059669;
+}
+
+.cancel {
+  background-color: #6b7280;
+  color: white;
+}
+
+.cancel:hover {
+  background-color: #4b5563;
+}
+
+.delete {
+  background-color: #ef4444;
+  color: white;
+}
+
+.delete:hover {
+  background-color: #dc2626;
+}
