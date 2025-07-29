@@ -1,0 +1,31 @@
+.card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.avatar {
+  font-size: 50px;
+  color: #4b5563;
+}
+
+.details h3 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #1f2937;
+}
+
+.details p {
+  margin: 4px 0;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
